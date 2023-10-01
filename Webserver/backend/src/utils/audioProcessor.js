@@ -13,16 +13,21 @@ async function processAudioChunk(audioChunkBase64) {
       let pyshell = new PythonShell('./models/voiceModel.py', {
         args: [tempFile] // Pass the filename as an argument
       });
-
+      
       pyshell.on('message', function (message) {
-        // Handle the message from the Python process
-        resolve(message);
+        try {
+          // Convert the base64 string to Buffer
+          const processedAudioBuffer = Buffer.from(message, 'base64');
+          resolve(processedAudioBuffer);
+        } catch(err) {
+          reject('Error converting base64 to Buffer: ' + err);
+        }
       });
 
       pyshell.end(function (err) {
         if (err) reject(err);
         // Optionally, delete the temporary file after processing
-        fs.unlink(tempFile, () => {});
+        fs.unlink(tempFile, () => { });
       });
     });
   });
