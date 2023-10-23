@@ -9,7 +9,7 @@ Pros: Express.js is a minimal, flexible Node.js web application framework that p
 Cons: It is unopinionated and might require more setup and boilerplate code.
 
 Networking / Real-time Communication
-WebSockets or Socket.io: For real-time bidirectional event-based communication.
+WebSockets For real-time bidirectional event-based communication.
 
 Database
 PostgreSQL: If a relational database is preferred.

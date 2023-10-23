@@ -12,7 +12,6 @@ function setupWebSocket() {
     socket.onopen = () => {
         console.log('WebSocket connection opened');
         setupDevices();
-        // setupStreaming();
     };
 
     socket.onclose = () => {
@@ -34,12 +33,6 @@ function base64ToArrayBuffer(base64) {
         bytes[i] = binaryString.charCodeAt(i);
     }
     return bytes.buffer;
-}
-
-function setupStreaming() {
-    // Setup event listeners for Start and Stop buttons here
-    document.getElementById('start').addEventListener('click', startStreaming);
-    document.getElementById('stop').addEventListener('click', stopStreaming);
 }
 
 // Populate input and output device dropdowns
